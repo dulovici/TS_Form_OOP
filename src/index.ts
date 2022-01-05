@@ -15,7 +15,7 @@ class App {
     this.service = new ValidationService();
   }
 
-  scanForErrors(filledForm: Account): any {
+  scanForErrors(filledForm: Account): string[] {
     const errors = [];
     Object.values(filledForm).forEach((el) => {
       if (el[0] === "error") errors.push(el[1]);
