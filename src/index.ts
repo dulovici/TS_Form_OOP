@@ -1,13 +1,26 @@
+// App Class / responsible business logic
+
 import { Account } from "./Classes/Account.js";
 import { Form } from "./Classes/Form.js";
 import { Constants } from "./Enums/Enums.js";
+import { ValidationService } from "./Classes/ValidationService.js";
 
 const { EmptyString } = Constants;
 class App {
   form: Form;
+  service: ValidationService;
 
   constructor() {
     this.form = new Form();
+    this.service = new ValidationService();
+  }
+
+  scanForErrors(filledForm: Account): any {
+    const errors = [];
+    Object.values(filledForm).forEach((el) => {
+      if (el[0] === "error") errors.push(el[1]);
+    });
+    return errors;
   }
 
   displayError(errors: string[]): void {
@@ -32,12 +45,10 @@ class App {
   }
 
   submitForm(): void {
-    const data = this.form.getData();
-    const user = new Account(data);
-    const errors = [];
-    Object.values(user).forEach((el) => {
-      if (el[0] === "error") errors.push(el[1]);
-    });
+    const colectedData = this.form.getData();
+    const validationService = this.service;
+    const user = new Account(colectedData, validationService);
+    const errors = this.scanForErrors(user);
     errors.length > 0 ? this.displayError(errors) : this.displaySuccess();
   }
 

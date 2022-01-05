@@ -1,15 +1,8 @@
+// Account Class / responsible for creating a instance from colected data
+
 import { IFormEntries } from "../Interfaces/interfaces";
 import { CheckedValue } from "../Types/types";
-import {
-  checkLegality,
-  checkName,
-  checkEmail,
-  checkPassword,
-  checkGender,
-  checkMobile,
-  checkAdress,
-  checkLName,
-} from "../Utilities/utilities.js";
+import { ValidationService } from "../Classes/ValidationService.js";
 
 export class Account {
   firstName: CheckedValue;
@@ -21,15 +14,15 @@ export class Account {
   gender: CheckedValue;
   mobile: CheckedValue;
   adress: CheckedValue;
-  constructor(user: IFormEntries) {
-    this.firstName = checkName(user.firstName);
-    this.lastName = checkLName(user.lastName);
+  constructor(user: IFormEntries, service: ValidationService) {
+    this.firstName = service.checkName(user.firstName);
+    this.lastName = service.checkLName(user.lastName);
     this.nickName = user.nickName;
-    this.eMail = checkEmail(user.eMail);
-    this.password = checkPassword(user.password);
-    this.dOb = checkLegality(user.dOb);
-    this.gender = checkGender(user.gender);
-    this.mobile = checkMobile(user.mobile);
-    this.adress = checkAdress(user.adress);
+    this.eMail = service.checkEmail(user.eMail);
+    this.password = service.checkPassword(user.password);
+    this.dOb = service.checkLegality(user.dOb);
+    this.gender = service.checkGender(user.gender);
+    this.mobile = service.checkMobile(user.mobile);
+    this.adress = service.checkAdress(user.adress);
   }
 }

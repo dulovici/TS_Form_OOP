@@ -1,4 +1,7 @@
+// Form Class / responsible for interaction with DOM
+
 import { IFormEntries } from "../Interfaces/interfaces.js";
+import { RadioButton } from "../Types/types.js";
 import { Constants } from "../Enums/Enums.js";
 
 const { EmptyString } = Constants;
@@ -35,12 +38,15 @@ export class Form {
     this.ressetBtn = document.querySelector("#resset");
   }
 
-  getData(): IFormEntries {
-    let gender = null;
-    this.genderHtmlElement.forEach((el: HTMLInputElement) => {
-      if (el.checked) gender = el.value;
+  radioButtonValue(radioGroup: NodeListOf<Element>): RadioButton {
+    let radioValue = null;
+    radioGroup.forEach((el: HTMLInputElement) => {
+      if (el.checked) radioValue = el.value;
     });
+    return radioValue;
+  }
 
+  getData(): IFormEntries {
     return {
       firstName: this.firstNameHtmlElement.value,
       lastName: this.lastNameHtmlElement.value,
@@ -48,7 +54,7 @@ export class Form {
       eMail: this.eMailHtmlElement.value,
       password: this.passwordHtmlElement.value,
       dOb: this.dObHtmlElement.value,
-      gender: gender,
+      gender: this.radioButtonValue(this.genderHtmlElement),
       mobile: this.mobileHtmlElement.value,
       adress: this.adressHtmlElement.value,
     };
