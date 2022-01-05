@@ -1,0 +1,11 @@
+{
+    "compilerOptions":{
+        "outDir": "./dist/js",
+        "sourceMap": true,
+        "module" : "ES2020",
+        "lib": ["es2017", "dom"],
+        "target": "es5",
+    },
+    "include": ["src/index.ts"],
+    "exclude": ["node_modules"],
+}

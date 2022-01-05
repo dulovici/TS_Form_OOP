@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./dist/js/index.js" defer></script>
+    <link rel="stylesheet" href="./src/Styles/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="content">
+      <div class="form-container">
+        <h3 class="title">Registration Form</h3>
+        <div class="input-field">
+          <label for="fname">First Name:</label><br />
+          <input type="text" id="fname" name="fname" /><br />
+        </div>
+        <div class="input-field">
+          <label for="lname">Last Name:</label><br />
+          <input type="text" id="lname" name="lname" /><br />
+        </div>
+        <div class="input-field">
+          <label for="nname">Nick Name:</label><br />
+          <input type="text" id="nname" name="nname" /><br />
+        </div>
+        <div class="input-field">
+          <label for="email">e-mail:</label><br />
+          <input type="text" id="email" name="email" /><br />
+        </div>
+        <div class="input-field">
+          <label for="password">Password:</label><br />
+          <input type="password" id="password" name="password" /><br />
+        </div>
+        <div class="input-field">
+          <label for="dob">Date of Birth:</label><br />
+          <input type="date" id="dob" name="dob" /><br />
+        </div>
+        <div class="input-field">
+          <label for="gender">Gender:</label><br />
+          <input type="radio" name="gender" value="male" /> Male<br />
+          <input type="radio" name="gender" value="female" />
+          Female<br />
+        </div>
+        <div class="input-field">
+          <label for="mobile">Mobile:</label><br />
+          <input type="text" id="mobile" name="mobile" /><br />
+        </div>
+        <div class="input-field">
+          <label for="adress">Adress:</label><br />
+          <input type="text" id="adress" name="adress" /><br />
+        </div>
+
+        <div class="btns">
+          <button id="submit">Submit</button>
+          <button id="resset">Resset</button>
+        </div>
+      </div>
+
+      <div class="msg-wr hidden">
+        <h4 class="msg"></h4>
+        <ul class="error-list"></ul>
+      </div>
+    </div>
+  </body>
+</html>
